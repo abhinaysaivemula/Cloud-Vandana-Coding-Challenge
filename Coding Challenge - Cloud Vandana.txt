@@ -1,0 +1,303 @@
+Java
+
+1.Create an array with values (1,2,3,4,5,6,7) and shuffle it
+
+import java.util.Random;
+
+public class Main {
+    public static void main(String[] args) {
+        int[] array = {1, 2, 3, 4, 5, 6, 7};
+        Random rand = new Random();
+        for (int i = array.length - 1; i > 0; i--) {
+            int j = rand.nextInt(i + 1);
+            int temp = array[i];
+            array[i] = array[j];
+            array[j] = temp;
+        }
+        for (int value : arr) {
+            System.out.print(value + " ");
+        }
+    }
+}
+
+
+2. Convert a Roman number into an interger
+
+import java.util.*;
+
+public class RomanToInteger {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a Roman numeral: ");
+        String romanNumeral = scanner.nextLine().toUpperCase();
+        int result = romanToInteger(romanNumeral);
+        System.out.println("The equivalent integer is: " + result);
+    }
+
+    public static int romanToInteger(String s) {
+        Map<Character, Integer> romanValues = new HashMap<>();
+        romanValues.put('I', 1);
+        romanValues.put('V', 5);
+        romanValues.put('X', 10);
+        romanValues.put('L', 50);
+        romanValues.put('C', 100);
+        romanValues.put('D', 500);
+        romanValues.put('M', 1000);
+
+        int result = 0;
+        int previousValue = 0;
+
+        for (int i = s.length() - 1; i >= 0; i--) {
+            int currentValue = romanValues.get(s.charAt(i));
+            if (currentValue < previousValue) {
+                result -= currentValue;
+            } else {
+                result += currentValue;
+            }
+            previousValue = currentValue;
+        }
+
+        return result;
+    }
+}
+
+3. Check if the input is Pangram or not
+
+import java.util.*;
+
+public class PangramCheck {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a string: ");
+        String input = scanner.nextLine().toLowerCase();
+        boolean isPangram = checkIfPangram(input);
+        if (isPangram) {
+            System.out.println("The input is a pangram.");
+        } else {
+            System.out.println("The input is not a pangram.");
+        }
+    }
+
+    public static boolean checkIfPangram(String str) {
+        boolean[] mark = new boolean[26];
+        int index;
+
+        for (int i = 0; i < str.length(); i++) {
+            if ('a' <= str.charAt(i) && str.charAt(i) <= 'z') {
+                index = str.charAt(i) - 'a';
+                mark[index] = true;
+            }
+        }
+
+        for (boolean value : mark) {
+            if (!value) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+}
+
+
+
+JavaScript
+
+1. Take a Sentence as input and reverse every word in that sentence
+
+function reverseWords(sentence) {
+    // Split the sentence into an array of words
+    let words = sentence.split(' ');
+
+    // Iterate through each word and reverse it
+    let reversedWords = words.map(word => {
+        return word.split('').reverse().join('');
+    });
+
+    // Join the reversed words back into a sentence
+    let reversedSentence = reversedWords.join(' ');
+
+    return reversedSentence;
+}
+
+
+2. Perform sorting of an array in descending order
+
+let numbers = [5, 1, 8, 3, 2, 9, 4, 7, 6];
+numbers.sort(function(a, b) {
+    return b - a;
+});
+
+console.log(numbers);
+
+HTML
+
+1. Create a basic calculator using HTML,CSS,JavaSript with the functionality of add,subtract,multiply and divide
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Calculator</title>
+    <style>
+        input[type="button"] {
+            width: 50px;
+            height: 50px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="result" readonly><br>
+    <input type="button" value="1" onclick="addToResult(1)">
+    <input type="button" value="2" onclick="addToResult(2)">
+    <input type="button" value="3" onclick="addToResult(3)">
+    <input type="button" value="+" onclick="addToResult('+')"><br>
+    <input type="button" value="4" onclick="addToResult(4)">
+    <input type="button" value="5" onclick="addToResult(5)">
+    <input type="button" value="6" onclick="addToResult(6)">
+    <input type="button" value="-" onclick="addToResult('-')"><br>
+    <input type="button" value="7" onclick="addToResult(7)">
+    <input type="button" value="8" onclick="addToResult(8)">
+    <input type="button" value="9" onclick="addToResult(9)">
+    <input type="button" value="*" onclick="addToResult('*')"><br>
+    <input type="button" value="C" onclick="clearResult()">
+    <input type="button" value="0" onclick="addToResult(0)">
+    <input type="button" value="=" onclick="calculateResult()">
+    <input type="button" value="/" onclick="addToResult('/')"><br>
+    <script>
+        function addToResult(value) {
+            document.getElementById('result').value += value;
+        }
+
+        function clearResult() {
+            document.getElementById('result').value = '';
+        }
+
+        function calculateResult() {
+            let result = eval(document.getElementById('result').value);
+            document.getElementById('result').value = result;
+        }
+    </script>
+</body>
+</html>
+
+2. Create a survey form with Fields; First Name, Last Name, Date of Birth, Country
+(dropdown), Gender (checkbox), Profession, email, and mobile number. All the input
+fields are necessary to submit the form. Create two buttons Submit and Reset. Reset will
+reset the form while clicking on submit, first, it will check all the fields and necessary
+validations and then a popup will appear displaying all the selected values with labels in
+front of it. On closing the popup, the form should reset all the values. Use the following
+image for reference
+
+HTML
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey Form</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Create a styles.css file for styling -->
+    <script src="script.js"></script> <!-- Create a script.js file for JavaScript code -->
+</head>
+<body>
+    <h1>Survey Form</h1>
+    <form id="surveyForm">
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" required><br>
+
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" required><br>
+
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" required><br>
+
+        <label for="country">Country:</label>
+        <select id="country" required>
+            <option value="usa">USA</option>
+            <option value="canada">Canada</option>
+            <!-- Add more countries as needed -->
+        </select><br>
+
+        <label>Gender:</label>
+        <input type="checkbox" id="male" value="male"> <label for="male">Male</label>
+        <input type="checkbox" id="female" value="female"> <label for="female">Female</label><br>
+
+        <label for="profession">Profession:</label>
+        <input type="text" id="profession" required><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" required><br>
+
+        <label for="mobile">Mobile Number:</label>
+        <input type="tel" id="mobile" required><br>
+
+        <button type="button" onclick="submitForm()">Submit</button>
+        <button type="button" onclick="resetForm()">Reset</button>
+    </form>
+
+    <div id="popup" class="popup">
+        <span class="close" onclick="closePopup()">&times;</span>
+        <h2>Survey Details</h2>
+        <p id="surveyDetails"></p>
+    </div>
+</body>
+</html>
+
+CSS
+
+.popup {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+    padding-top: 60px;
+}
+
+.popup-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+Javascript
+
+function submitForm() {
+    // Perform validations here
+    // If valid, display popup with survey details
+    // Otherwise, show error messages
+}
+
+function resetForm() {
+    document.getElementById('surveyForm').reset();
+}
+
+function closePopup() {
+    document.getElementById('popup').style.display = 'none';
+}
+
